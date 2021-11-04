@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
   title: String,
-  message: String,
+  task: String,
   creator: String,
   createdAt: {
     type: Date,
