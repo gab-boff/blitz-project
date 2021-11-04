@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import { getTasks } from "./actions/tasks.action";
+
 import TaskList from "./components/Tasks/TaskList";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTasks());
+  }, [dispatch]);
+
   return (
     <div>
       <h1>App</h1>

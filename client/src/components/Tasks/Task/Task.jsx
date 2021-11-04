@@ -1,7 +1,15 @@
 import React from "react";
 
 const Task = () => {
-  return <h1>Task</h1>;
+  const handleSubmite = () => {};
+
+  return (
+    <div>
+      <form autoComplete="off" noValidate onSubmit={handleSubmite}>
+        <input type="text" name="creator" />
+      </form>
+    </div>
+  );
 };
 
 export default Task;
