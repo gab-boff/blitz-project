@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { createTask } from "../../actions/tasks.action";
 
 const Form = () => {
   const [taskData, setTaskData] = useState({
@@ -7,7 +10,13 @@ const Form = () => {
     creator: "",
   });
 
-  const handleSubmite = () => {};
+  const dispatch = useDispatch();
+
+  const handleSubmite = (e) => {
+    e.preventDefault();
+
+    dispatch(createTask(taskData));
+  };
 
   return (
     <div>

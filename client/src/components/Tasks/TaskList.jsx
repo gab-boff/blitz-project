@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const TaskList = () => {
   const tasks = useSelector((state) => state.tasks);
-  console.log(tasks, "batata");
+  console.log(tasks);
 
   return (
     <>

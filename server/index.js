@@ -8,10 +8,11 @@ import postRoutes from "./routes/posts.js";
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.use(cors());
 
-app.use("/posts", postRoutes);
+app.use("/", postRoutes);
 
 const CONNECTION_URL =
   "mongodb+srv://blitz:blitz123@cluster0.ywcem.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
