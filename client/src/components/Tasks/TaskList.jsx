@@ -7,11 +7,11 @@ const TaskList = ({ setCurrentId }) => {
   console.log(tasks);
 
   return !tasks.length ? (
-    <p>No tasks</p>
+    <p className="container">No tasks</p>
   ) : (
     <div>
       {tasks.map((task) => (
-        <div key={task._id}>
+        <div key={task._id} className="container">
           <Task task={task} setCurrentId={setCurrentId} />
         </div>
       ))}
