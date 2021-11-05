@@ -42,3 +42,14 @@ export const updateTask = async (req, res) => {
 
   res.json(updateTask);
 };
+
+export const deleteTask = async (req, res) => {
+  const { id: _id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send("Nonexistent id");
+
+  await TaskMessage.findByIdAndRemove(id);
+
+  res.json({ message: "Task deleted" });
+};
