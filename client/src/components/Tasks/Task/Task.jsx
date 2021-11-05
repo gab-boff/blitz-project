@@ -1,9 +1,15 @@
 import React from "react";
 
-const Task = () => {
+// import moment from "moment";
+
+const Task = ({ task, setCurrentId }) => {
   return (
     <div>
-      <h1>oi</h1>
+      <div>{task.title}</div>
+      <div>{task.creator}</div>
+      <div>{task.task}</div>
+      <button onClick={() => setCurrentId(task._id)}>Edit</button>
+      {/* <div>{moment(task.createdAt).fromNow()}</div> */}
     </div>
   );
 };
