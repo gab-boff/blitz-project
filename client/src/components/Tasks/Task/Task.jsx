@@ -22,7 +22,10 @@ const Task = ({ task, setCurrentId }) => {
       </Button>
       {/* <div>{moment(task.createdAt).fromNow()}</div> */}
       <Button
-        onClick={() => dispatch(deleteTask(task._id))}
+        onClick={() => {
+          dispatch(deleteTask(task._id));
+          window.location.reload();
+        }}
         className="pl-3 pr-3 m-1"
       >
         Delete

@@ -1,1 +1,1 @@
-Para rodar o projeto, é necessário baixar as dependências em ambas as pastas, client e server, e após isso iniciar ambas utilizando <b>npm start<b>, note que haverá dois terminais, um para cada pasta.
+Para rodar o projeto, é necessário baixar as dependências em ambas as pastas, client e server, e após isso iniciar ambas utilizando <b>npm start</b>, note que haverá dois terminais, um para cada pasta.
