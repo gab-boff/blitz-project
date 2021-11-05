@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { createTask, updateTask } from "../../actions/tasks.action";
 
+import { Button } from "react-bootstrap";
+
 const Form = ({ currentId, setCurrentId }) => {
   const [taskData, setTaskData] = useState({
     title: "",
@@ -43,9 +45,16 @@ const Form = ({ currentId, setCurrentId }) => {
 
   return (
     <div>
-      <form autoComplete="off" noValidate onSubmit={handleSubmite}>
+      <form
+        autoComplete="off"
+        noValidate
+        onSubmit={handleSubmite}
+        className=" col-md-6 col-md-offset-3 column"
+      >
         <h3>{currentId ? "Editing" : "Creating"} a Task</h3>
+
         <input
+          className="input-group-text mb-3"
           type="text"
           name="creator"
           placeholder="Creator"
@@ -57,6 +66,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
 
         <input
+          className="input-group-text mb-3"
           type="text"
           name="title"
           placeholder="Title"
@@ -66,6 +76,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
 
         <input
+          className="input-group-text mb-3"
           type="text"
           name="task"
           placeholder="Task"
@@ -74,9 +85,11 @@ const Form = ({ currentId, setCurrentId }) => {
           onChange={(e) => setTaskData({ ...taskData, task: e.target.value })}
         />
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
-      <button onClick={clear}>Clear</button>
+      {/* <Button onClick={clear} className="">
+        Clear
+      </Button> */}
     </div>
   );
 };
