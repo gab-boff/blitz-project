@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { getTasks } from "./actions/tasks.action";
@@ -7,17 +7,18 @@ import TaskList from "./components/Tasks/TaskList";
 import Form from "./components/Form/Form";
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTasks());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <div>
-      <h1>App</h1>
-      <TaskList />
-      <Form />
+      <Form currentId={currentId} setCurrentId={setCurrentId} />
+      <TaskList setCurrentId={setCurrentId} />
     </div>
   );
 };

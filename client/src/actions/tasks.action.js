@@ -9,7 +9,7 @@ export const getTasks = () => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -22,6 +22,19 @@ export const createTask = (task) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
+  }
+};
+
+export const updateTask = (id, task) => async (dispatch) => {
+  try {
+    const { data } = await api.updatePost(id, task);
+
+    dispatch({
+      type: "UPDATE",
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
   }
 };

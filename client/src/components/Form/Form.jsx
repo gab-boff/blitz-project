@@ -1,26 +1,50 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { createTask } from "../../actions/tasks.action";
+import { createTask, updateTask } from "../../actions/tasks.action";
 
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
   const [taskData, setTaskData] = useState({
     title: "",
     task: "",
     creator: "",
   });
 
+  const task = useSelector((state) =>
+    currentId ? state.tasks.find((t) => t._id === currentId) : null
+  );
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (task) setTaskData(task);
+  }, [task]);
 
   const handleSubmite = (e) => {
     e.preventDefault();
 
-    dispatch(createTask(taskData));
+    if (currentId) {
+      dispatch(updateTask(currentId, taskData));
+    } else {
+      dispatch(createTask(taskData));
+    }
+
+    clear();
+  };
+
+  const clear = () => {
+    setCurrentId(null);
+    setTaskData({
+      title: "",
+      task: "",
+      creator: "",
+    });
   };
 
   return (
     <div>
       <form autoComplete="off" noValidate onSubmit={handleSubmite}>
+        <h3>{currentId ? "Editing" : "Creating"} a Task</h3>
         <input
           type="text"
           name="creator"
@@ -52,6 +76,7 @@ const Form = () => {
 
         <button type="submit">Submit</button>
       </form>
+      <button onClick={clear}>Clear</button>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
-import postRoutes from "./routes/posts.js";
+import taskRoutes from "./routes/routes.js";
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded());
 
 app.use(cors());
 
-app.use("/", postRoutes);
+app.use("/", taskRoutes);
 
 const CONNECTION_URL =
   "mongodb+srv://blitz:blitz123@cluster0.ywcem.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";

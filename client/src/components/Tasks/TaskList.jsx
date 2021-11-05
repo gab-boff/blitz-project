@@ -2,16 +2,20 @@ import React from "react";
 import Task from "./Task/Task";
 import { useSelector } from "react-redux";
 
-const TaskList = () => {
+const TaskList = ({ setCurrentId }) => {
   const tasks = useSelector((state) => state.tasks);
   console.log(tasks);
 
-  return (
-    <>
-      <h1>Task List</h1>
-      <Task />
-      <Task />
-    </>
+  return !tasks.length ? (
+    <p>No tasks</p>
+  ) : (
+    <div>
+      {tasks.map((task) => (
+        <div key={task._id}>
+          <Task task={task} setCurrentId={setCurrentId} />
+        </div>
+      ))}
+    </div>
   );
 };
 
